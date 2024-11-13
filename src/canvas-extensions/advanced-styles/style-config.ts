@@ -211,3 +211,58 @@ export const BUILTIN_EDGE_STYLE_ATTRIBUTES = [
     ]
   }
 ] as StyleAttribute[]
+
+export interface NamedColorAttribute{
+	name : string,
+	color : string
+}
+
+export const DEFAULT_NODE_NAMED_COLOR_ATTRIBUTES = [
+	{
+		name : "接口",
+		color : "#FFFFFF"
+	},
+	{
+		name : "结构体",
+		color : "#F0FF80"
+	},
+	{
+		name : "类",
+		color : "#AE00FF"
+	},
+	{
+		name : "单例类",
+		color : "#EEFF00",
+	},
+	{
+		name : "组件",
+		color : "#0400FF"
+	},
+	{
+		name : "枚举",
+		color : "#00FF33"
+	},
+	{
+		name : "委托",
+		color : "#00B3FF"
+	}
+] as NamedColorAttribute[]
+
+export const DEFAULT_LINE_NAMED_COLOR_ATTRIBUTES = [
+	{
+		name : "引用",
+		color : "#E1FF00"
+	},
+	{
+		name : "创建",
+		color : "#BB00FF"
+	},
+	{
+		name : "继承",
+		color : "#FF0000"
+	},
+	{
+		name : "聚合",
+		color : "#0062FF"
+	}
+] as NamedColorAttribute[]
