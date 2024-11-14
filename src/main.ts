@@ -1,6 +1,6 @@
-import { ItemView, Plugin} from 'obsidian'
+import {debounce, ItemView, Notice, Plugin} from 'obsidian'
 import CanvasPatcher from './core/canvas-patcher'
-import {Canvas, CanvasView} from './@types/Canvas'
+import {BBox, Canvas, CanvasEdgeData, CanvasNode, CanvasView} from './@types/Canvas'
 
 // Utils
 import IconsHelper from './utils/icons-helper'
@@ -36,6 +36,10 @@ import EdgeExposerExtension from './canvas-extensions/dataset-exposers/edge-expo
 import CanvasWrapperExposerExtension from './canvas-extensions/dataset-exposers/canvas-wrapper-exposer'
 import MigrationHelper from './utils/migration-helper'
 import {around} from "monkey-around";
+import {NodeSide} from "obsidian/canvas";
+import {
+	NodeSelfConnectionCanvasExtension
+} from "./canvas-extensions/node-self-connection-canvas-extension";
 
 const CANVAS_EXTENSIONS: typeof CanvasExtension[] = [
 	// Dataset Exposers
@@ -62,7 +66,8 @@ const CANVAS_EXTENSIONS: typeof CanvasExtension[] = [
 	EncapsulateCanvasExtension,
 	ColorPaletteCanvasExtension,
 	PresentationCanvasExtension,
-	PortalsCanvasExtension
+	PortalsCanvasExtension,
+	NodeSelfConnectionCanvasExtension
 ]
 
 export default class AdvancedCanvasPlugin extends Plugin {
@@ -74,6 +79,8 @@ export default class AdvancedCanvasPlugin extends Plugin {
 
 	canvasPatcher: CanvasPatcher
 	canvasExtensions: CanvasExtension[]
+	public patchedEdge: boolean;
+
 
 	async onload() {
 		this.migrationHelper = new MigrationHelper(this)

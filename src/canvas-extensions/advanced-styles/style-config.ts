@@ -227,11 +227,11 @@ export const DEFAULT_NODE_NAMED_COLOR_ATTRIBUTES = [
 		color : "#F0FF80"
 	},
 	{
-		name : "类",
+		name : "虚幻类",
 		color : "#AE00FF"
 	},
 	{
-		name : "单例类",
+		name : "普通类",
 		color : "#EEFF00",
 	},
 	{

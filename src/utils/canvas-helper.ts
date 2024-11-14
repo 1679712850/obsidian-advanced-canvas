@@ -12,7 +12,7 @@ export interface MenuOption {
 }
 
 export default class CanvasHelper {
-	static readonly GRID_SIZE = 20
+	static readonly GRID_SIZE = 50
 	static activeButtons: HTMLButtonElement[]
 
 	static canvasCommand(plugin: AdvancedCanvasPlugin, check: (canvas: Canvas) => boolean, run: (canvas: Canvas) => void): (checking: boolean) => boolean {
